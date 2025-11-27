@@ -1,0 +1,22 @@
+# Render deployment configuration
+services:
+  - type: web
+    name: elearning-platform
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URL
+        fromDatabase:
+          name: elearning-mongodb
+          property: connectionString
+      - key: SESSION_SECRET
+        generateValue: true
+    healthCheckPath: /
+
+databases:
+  - name: elearning-mongodb
+    databaseName: elearning
+    user: elearning

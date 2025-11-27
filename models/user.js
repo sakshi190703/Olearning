@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -66,7 +67,11 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.methods.comparePassword = async function(candidatePassword) {
-    return candidatePassword === this.password;
+    try {
+        return await bcrypt.compare(candidatePassword, this.password);
+    } catch (error) {
+        throw new Error('Password comparison failed');
+    }
 };
 
 module.exports = mongoose.model('User', userSchema);

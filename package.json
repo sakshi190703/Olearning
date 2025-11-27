@@ -1,9 +1,14 @@
 {
   "name": "elearningplatform",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "build": "echo 'No build step required'",
+    "test": "node healthcheck.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
@@ -17,17 +22,24 @@
     "ejs-mate": "^4.0.0",
     "express": "^5.1.0",
     "express-session": "^1.18.1",
+    "express-validator": "^7.3.1",
     "method-override": "^3.0.0",
     "mongoose": "^8.13.2",
     "multer": "^1.4.5-lts.2",
     "passport": "^0.7.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "winston": "^3.18.3"
   },
   "devDependencies": {
     "@ljharb/tsconfig": "^0.3.2",
     "autoprefixer": "^10.4.21",
+    "nodemon": "^3.1.11",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.4"
   },
-  "description": ""
+  "description": "Modern e-learning platform built with Node.js, Express, and MongoDB",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
 }
